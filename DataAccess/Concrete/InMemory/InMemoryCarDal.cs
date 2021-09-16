@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace DataAccess.Concrete.InMemory
         {
             _Cars = new List<Car>
 
-            {new Car {Id=1, BrandId=1, ColorId=1 , ModelYear=2005 , DailyPrice= 200 , Description= "hatasız günlük"}
+            {new Car {CarId=1, BrandId=1, ColorId=1 , ModelYear=2005 , DailyPrice= 200 , Description= "hatasız günlük"}
 
 
             };
@@ -27,7 +28,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car carToDelete = _Cars.SingleOrDefault(c => c.Id == car.Id);
+            Car carToDelete = _Cars.SingleOrDefault(c => c.CarId == car.CarId);
             _Cars.Remove(carToDelete);
         }
 
@@ -48,12 +49,17 @@ namespace DataAccess.Concrete.InMemory
 
         public List<Car> GetAllById(int ıd)
         {
-            return _Cars.Where(c => c.Id == ıd).ToList();
+            return _Cars.Where(c => c.CarId == ıd).ToList();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
         {
-            Car carToUpdate = _Cars.SingleOrDefault(c => c.Id == car.Id);
+            Car carToUpdate = _Cars.SingleOrDefault(c => c.CarId == car.CarId);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
