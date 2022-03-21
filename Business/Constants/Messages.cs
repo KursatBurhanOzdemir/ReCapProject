@@ -38,5 +38,7 @@ namespace Business.Constants
         public static string RentalDeleted = "Kiralama Silindi ";
         public static string RentalUpdated = "Kiralama Güncellendi";
         public static string RentalListed = "Kiralama Listelendi ";
+
+        public static string carImageLimit = "Araba resim limitine ulaştınız";
     }
 }
